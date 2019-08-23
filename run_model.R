@@ -18,96 +18,14 @@ contamcalc <- cntcalc(contam, constants)
 btch <- bioaccum_batch(biota, contamcalc, biota_preyprop, constants)
 
 # append to reactive output
-cbiota <- btch$CBIOTA
-bsaf <- btch$BSAF
-contamcalc <- contamcalc
+cbiota <- btch$cbiota
+bsaf <- btch$bsaf
 
+# summary table
+indic_sum_fun(cbiota, contamcalc)
 
-  
-  
-  
-  
+# plot of bsaf, cbiota by specific contaminant
+plo_bsaf(bsaf, cbiota, 'alphaChlordane')
 
-# bsaf results
-bsaf <- reactive({
-  
-  # input
-  bsaf <-res$bsaf
-  
-  # bsaf
-  nms <- colnames(bsaf) 
-  out <- bsaf %>% 
-    data.frame %>% 
-    rownames_to_column('species') 
-  names(out) <- c('species', nms)
-  
-  return(out)
-  
-})
-
-# concentration in biota
-cbiota <- reactive({
-  
-  # input
-  cbiota <- res$cbiota
-  
-  # cbiota
-  nms <- colnames(cbiota) 
-  out <- cbiota %>% 
-    data.frame %>% 
-    rownames_to_column('species') 
-  names(out) <- c('species', nms)
-  
-  return(out)
-  
-})
-
-# combine bsaf and cbiota output
-rescmb <- reactive({
-  
-  # input
-  cntbsaf <- input$cntbsaf
-  bsaf <- bsaf()
-  cbiota <- cbiota()
-  
-  req(cntbsaf)
-  
-  # bsaf
-  bsaf <- bsaf %>% 
-    select(species, !!cntbsaf) %>% 
-    rename(
-      BSAF = !!cntbsaf
-    ) %>% 
-    mutate(species = factor(species, levels = species))
-  
-  # cbiota
-  cbiota <- cbiota %>% 
-    select(species, !!cntbsaf) %>% 
-    rename(
-      `Tissue conc. (ng/g wet)` = !!cntbsaf
-    ) %>% 
-    mutate(species = factor(species, levels = species))
-  
-  out <- bsaf %>% 
-    left_join(cbiota, by = 'species') %>% 
-    gather('var', 'val', -species)
-  
-  return(out)
-  
-})
-
-# summary of contaminants across indicator guilds
-indic_sum <- reactive({
-  
-  # input
-  cbiota <- cbiota()
-  contamcalc <- res$contamcalc
-  
-  req(!is.null(res$contamcalc))
-  
-  out <- indic_sum_fun(cbiota, contamcalc)
-  
-  return(out)
-  
-})
-
+# tabular summary of bsaf, cbiota by specific contaminant
+tab_bsaf(bsaf, cbiota, 'alphaChlordane')
