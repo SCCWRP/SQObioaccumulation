@@ -9,7 +9,7 @@ Install the package as follows:
 ```{r, eval = F}
 install.packages('devtools')
 library(devtools)
-install_github('SCCWRP/SQO_bioaccumulation')
+install_github('SCCWRP/SQObioaccumulation')
 ```
 
 Run the bioaccumulation model with defaults:
