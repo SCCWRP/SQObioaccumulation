@@ -4,22 +4,13 @@ library(tidyverse)
 source('R/funcs.R')
 
 # data inputs
-tischmthr <- read.csv('data/tischmthr.csv', stringsAsFactors = FALSE)
-finalsiteassess <- read.csv('data/finalsiteassess.csv', stringsAsFactors = FALSE)
-indic_lookup <- read.csv('data/indic_lookup.csv', stringsAsFactors = FALSE)
+# tischmthr <- read.csv('data/tischmthr.csv', stringsAsFactors = FALSE)
+# finalsiteassess <- read.csv('data/finalsiteassess.csv', stringsAsFactors = FALSE)
+# indic_lookup <- read.csv('data/indic_lookup.csv', stringsAsFactors = FALSE)
 biota <- read.csv('data/biota.csv', stringsAsFactors = FALSE)
 constants <- read.csv('data/constants.csv', stringsAsFactors = FALSE)
 contam <- read.csv('data/contam.csv', stringsAsFactors = FALSE)
 biota_preyprop <- read.csv('data/preyprop.csv', stringsAsFactors = FALSE, row.names = 1)
-
-# # format biota from input
-# biota <- formsppinp(input, biota)
-# 
-# # format constants from input
-# constants <- formcnsinp(input, constants)
-# 
-# # format contams from input
-# contam <- formcntinp(input, contam)
 
 # calculated contaminant inputs
 contamcalc <- cntcalc(contam, constants)
