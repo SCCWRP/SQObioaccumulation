@@ -1,0 +1,61 @@
+---
+output: github_document
+---
+
+# README
+
+Install the package as follows:
+
+```{r, eval = F}
+install.packages('devtools')
+library(devtools)
+install_github('SCCWRP/SQO_bioaccumulation')
+```
+
+Run the bioaccumulation model with defaults:
+
+```{r}
+library(tidyr)
+library(ggplot2)
+library(dplyr)
+library(tibble)
+source("R/funcs.R")
+
+# data inputs
+data(biota)
+data(constants)
+data(contam)
+data(biota_preyprop)
+
+# calculated contaminant inputs
+contamcalc <- cntcalc(contam, constants)
+
+# run model
+btch <- bioaccum_batch(biota, contamcalc, biota_preyprop, constants)
+
+# append to reactive output
+cbiota <- btch$cbiota
+bsaf <- btch$bsaf
+```
+
+Creat a summary table.
+
+```{r}
+# summary table
+indic_sum_fun(cbiota, contamcalc)
+```
+
+Plot BSAF and tissue concentration estimates for a selected contaminant.
+
+```{r, fig.height = 7, fig.width = 9}
+# plot of bsaf, cbiota by specific contaminant
+plo_bsaf(bsaf, cbiota, 'alphaChlordane')
+```
+
+Make a table of BSAF and tissue concentration estimates for a selected contaminant.
+
+```{r}
+# tabular summary of bsaf, cbiota by specific contaminant
+tab_bsaf(bsaf, cbiota, 'alphaChlordane')
+```
+
