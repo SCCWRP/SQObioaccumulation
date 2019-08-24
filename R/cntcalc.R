@@ -5,6 +5,8 @@
 #' 
 #' @import dplyr tidyr
 #' 
+#' @export
+#' 
 #' @importFrom magrittr "%>%"
 cntcalc <- function(contam, constants){
   

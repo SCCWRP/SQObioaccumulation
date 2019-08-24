@@ -5,6 +5,8 @@
 #'
 #' @import dplyr tidyr
 #' 
+#' @export
+#' 
 #' @importFrom magrittr "%>%"
 indic_sum_fun <- function(cbiota, contamcalc){
   

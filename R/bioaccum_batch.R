@@ -7,6 +7,8 @@
 #'
 #' @import tibble
 #' 
+#' @export
+#' 
 #' @importFrom magrittr "%>%"
 bioaccum_batch <- function(biota, contam, biota_preyprop, constants){
   
