@@ -1,6 +1,11 @@
 
 # README
 
+[![Travis build
+status](https://travis-ci.org/SCCWRP/SQObioaccumulation.svg?branch=master)](https://travis-ci.org/SCCWRP/SQObioaccumulation)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/SCCWRP/SQObioaccumulation?branch=master&svg=true)](https://ci.appveyor.com/project/SCCWRP/SQObioaccumulation)
+
 Install the package as follows:
 
 ``` r
