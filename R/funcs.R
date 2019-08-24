@@ -45,10 +45,8 @@
 #' @param assimEff_2 
 #' @param assimEff_3 
 #'
-#' @return
 #' @export
 #'
-#' @examples
 FoodWeb_SQO <- function(NumSim, csed, cwater, cpw, log_KowTS, logkow_tempcor, EdA, EdB, xdoc, 
                               ddoc, xpoc, dpoc, alphapoc, alphadoc, ocsed, ds, taxa, A, B, T, lipid, nloc, 
                               nlom, wc, beta, betap, mo, mp, phi, kM, Wb, Cox, vss, scav, preyprop, cbiota, 
@@ -201,6 +199,9 @@ FoodWeb_SQO <- function(NumSim, csed, cwater, cpw, log_KowTS, logkow_tempcor, Ed
 #' @param biota_preyprop input prey proportions
 #' @param constants input constants
 #'
+#' @import tibble
+#' 
+#' @importFrom magrittr "%>%"
 bioaccum_batch <- function(biota, contam, biota_preyprop, constants){
 
   ### HAVE HARD-CODED THE PARAMETER NAMES
@@ -377,6 +378,10 @@ bioaccum_batch <- function(biota, contam, biota_preyprop, constants){
 #'
 #' @param contam input contaminants from formatted user inputs
 #' @param constants input constants from formatted user inputs
+#' 
+#' @import dplyr tidyr
+#' 
+#' @importFrom magrittr "%>%"
 cntcalc <- function(contam, constants){
 
   # total organic carbon input (ocsed)
@@ -454,6 +459,9 @@ cntcalc <- function(contam, constants){
 #' @param cbiota 
 #' @param contamcalc contaminants fom inputs
 #'
+#' @import dplyr tidyr
+#' 
+#' @importFrom magrittr "%>%"
 indic_sum_fun <- function(cbiota, contamcalc){
  
   # cbiota long format
@@ -505,10 +513,10 @@ indic_sum_fun <- function(cbiota, contamcalc){
 #' @param cbiota 
 #' @param cntbsaf 
 #'
-#' @return
 #' @export
-#'
-#' @examples
+#' 
+#' @import dplyr tidyr
+#' @importFrom magrittr "%>%"
 rescmb <- function(bsaf, cbiota, cntbsaf){
   
   # check if selected contaminant in bsaf
@@ -546,12 +554,10 @@ rescmb <- function(bsaf, cbiota, cntbsaf){
 #' @param rescmb 
 #' @param cntbsaf 
 #'
-#' @return
 #' @export
 #' 
 #' @import ggplot2
 #'
-#' @examples
 plo_bsaf <- function(bsaf, cbiota, cntbsaf){
   
   # combine for plotting
@@ -581,10 +587,10 @@ plo_bsaf <- function(bsaf, cbiota, cntbsaf){
 #' @param cbiota 
 #' @param cntbsaf 
 #'
-#' @return
 #' @export
 #'
-#' @examples
+#' @import dplyr tidyr
+#' @importFrom magrittr "%>%"
 tab_bsaf <- function(bsaf, cbiota, cntbsaf){
   
   # combine for plotting

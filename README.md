@@ -6,32 +6,13 @@ Install the package as follows:
 ``` r
 install.packages('devtools')
 library(devtools)
-install_github('SCCWRP/SQO_bioaccumulation')
+install_github('SCCWRP/SQObioaccumulation')
+library(SQObioaccumulation)
 ```
 
 Run the bioaccumulation model with defaults:
 
 ``` r
-library(tidyr)
-library(ggplot2)
-library(dplyr)
-```
-
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
-``` r
-library(tibble)
-source("R/funcs.R")
-
 # data inputs
 data(biota)
 data(constants)
@@ -42,14 +23,14 @@ data(biota_preyprop)
 contamcalc <- cntcalc(contam, constants)
 
 # run model
-btch <- bioaccum_batch(biota, contamcalc, biota_preyprop, constants)
+res <- bioaccum_batch(biota, contamcalc, biota_preyprop, constants)
 
-# append to reactive output
-cbiota <- btch$cbiota
-bsaf <- btch$bsaf
+# assign output to separate objects
+cbiota <- res$cbiota
+bsaf <- res$bsaf
 ```
 
-Creat a summary table.
+Creat a summary table:
 
 ``` r
 # summary table
@@ -71,17 +52,17 @@ indic_sum_fun(cbiota, contamcalc)
     ## # ... with 4 more variables: `Chlordanes Conc (ng/g)` <dbl>, `Dieldrin
     ## #   Conc (ng/g)` <dbl>, `DDTs Conc (ng/g)` <dbl>, `PCBs Conc (ng/g)` <dbl>
 
-Plot BSAF and tissue concentration estimates for a selected contaminant.
+Plot BSAF and tissue concentration estimates for a selected contaminant:
 
 ``` r
 # plot of bsaf, cbiota by specific contaminant
 plo_bsaf(bsaf, cbiota, 'alphaChlordane')
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 Make a table of BSAF and tissue concentration estimates for a selected
-contaminant.
+contaminant:
 
 ``` r
 # tabular summary of bsaf, cbiota by specific contaminant
