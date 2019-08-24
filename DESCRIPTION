@@ -1,0 +1,12 @@
+Package: SQObioaccumulation
+Title: Run bioaccumulation model for SQO human health objectives
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Marcus",
+           family = "Beck",
+           role = c("aut", "cre"),
+           email = "marcusb@sccwrp.org")
+Description: Run Gabos/Arnot bioaccumulation model for SQO human health objectives.  The core functions were adapted from code written by Michelle Lent in 2010, edited by BG and ML.
+License: CC0
+Encoding: UTF-8
+LazyData: true
