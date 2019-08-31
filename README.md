@@ -39,7 +39,8 @@ Creat a summary table:
 
 ``` r
 # summary table
-indic_sum_fun(cbiota, contamcalc)
+indic_sum <- indic_sum_fun(cbiota, contamcalc)
+indic_sum
 ```
 
     ## # A tibble: 9 x 9
@@ -98,3 +99,52 @@ tab_bsaf(bsaf, cbiota, 'alphaChlordane')
     ##   indic7 indic8 indic9
     ## 1  0.907  2.374  3.633
     ## 2  1.814  4.747  7.266
+
+Run Monte Carlo simulations (MCS) with results from bioaccumulation
+model and additional inputs:
+
+``` r
+mcsres <- mcs_fun(1000, indic_sum, mcsparms, constants, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0))
+```
+
+Summarize MCS results:
+
+``` r
+mcs_sum_fun(mcsres)
+```
+
+    ## # A tibble: 4 x 12
+    ##   Compound    `0%`   `1%`   `5%`  `10%`  `25%` `50%` `75%` `90%` `95%`
+    ##   <chr>      <dbl>  <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>
+    ## 1 Chlorda~ 0.138   0.210  0.296  0.376  0.523  0.738 1.06  1.46   1.93
+    ## 2 DDT      0.0805  0.209  0.375  0.523  0.884  1.57  2.78  4.80   5.99
+    ## 3 Dieldrin 0.567   0.783  1.21   1.49   1.94   2.71  3.93  5.35   6.37
+    ## 4 PCB      0.00212 0.0105 0.0231 0.0364 0.0703 0.144 0.324 0.676  1.06
+    ## # ... with 2 more variables: `99%` <dbl>, `100%` <dbl>
+
+Plot cumulative distribution curves for MCS:
+
+``` r
+mcs_plo(mcsres)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+Get overall SQO assessment:
+
+``` r
+wgtavg <- wgt_avg_fun(mcsparms, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0))
+sqo_sum_fun(wgtavg, mcsres, tischmthr, constants, finalsiteassess)
+```
+
+    ## # A tibble: 4 x 12
+    ##   Compound `Weighted obser~  `25%` `50%` `75%` `Weighted estim~
+    ##   <chr>               <dbl>  <dbl> <dbl> <dbl>            <dbl>
+    ## 1 Chlorda~             2.28 0.523  0.738 1.06             1.69 
+    ## 2 DDT                  4.85 0.884  1.57  2.78             7.59 
+    ## 3 Dieldrin             0.25 1.94   2.71  3.93             0.678
+    ## 4 PCB                 36.5  0.0703 0.144 0.324            5.24 
+    ## # ... with 6 more variables: `Chemical exposure score` <dbl>, `Chemical
+    ## #   exposure category` <chr>, `Site linkage score` <dbl>, `Site linkage
+    ## #   category` <chr>, `Site assessment score` <dbl>, `Site assessment
+    ## #   category` <chr>
