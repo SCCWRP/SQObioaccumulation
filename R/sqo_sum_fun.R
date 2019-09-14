@@ -7,8 +7,6 @@
 #' @param finalsiteassess final site assessment lookup table
 #'
 #' @export
-#'
-#' @examples
 sqo_sum_fun <- function(wgtavg, mcsres, tischmthr, constants, finalsiteassess){
   
   # category scores and labels, final labels

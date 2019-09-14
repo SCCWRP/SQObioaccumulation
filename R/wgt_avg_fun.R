@@ -3,6 +3,7 @@
 #' @param mcsparms input mcsparms data frame, observed average concentrations extracted
 #' @param propseaf numeric vector indicating proportion of human diet for each guild species
 #'
+#' @export
 wgt_avg_fun <- function(mcsparms, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0)){
   
   # sanity checks
