@@ -4,10 +4,14 @@
 \alias{mcs_plo}
 \title{Create MCS summary plot}
 \usage{
-mcs_plo(mcsres)
+mcs_plo(mcsres, alpha = 0.4, xmax = NULL)
 }
 \arguments{
 \item{mcsres}{output from \code{\link{mcs_fun}}}
+
+\item{alpha}{numeric value for transparency of background fill}
+
+\item{xmax}{numeric value for upper limit of x-axis, defaults to 95th percentile of all linkage values}
 }
 \description{
 Create MCS summary plot
