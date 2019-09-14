@@ -4,7 +4,7 @@
 \alias{tab_bsaf}
 \title{Table of bsaf and cbiota for contaminant}
 \usage{
-tab_bsaf(bsaf, cbiota, cntbsaf)
+tab_bsaf(bsaf, cbiota, cntbsaf = NULL)
 }
 \arguments{
 \item{bsaf}{bsaf output from \code{\link{bioaccum_batch}}}

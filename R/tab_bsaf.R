@@ -8,7 +8,7 @@
 #'
 #' @import dplyr tidyr
 #' @importFrom magrittr "%>%"
-tab_bsaf <- function(bsaf, cbiota, cntbsaf){
+tab_bsaf <- function(bsaf, cbiota, cntbsaf = NULL){
   
   # combine for plotting
   totab <- rescmb(bsaf, cbiota, cntbsaf) %>% 

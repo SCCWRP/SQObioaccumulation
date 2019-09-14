@@ -4,14 +4,14 @@
 \alias{rescmb}
 \title{Combine bsaf and cbiota for plot/table of contaminant}
 \usage{
-rescmb(bsaf, cbiota, cntbsaf)
+rescmb(bsaf, cbiota, cntbsaf = NULL)
 }
 \arguments{
 \item{bsaf}{bsaf output from \code{\link{bioaccum_batch}}}
 
 \item{cbiota}{cbiota output from \code{\link{bioaccum_batch}}}
 
-\item{cntbsaf}{selected contaminant}
+\item{cntbsaf}{selected contaminant, optional}
 }
 \description{
 Combine bsaf and cbiota for plot/table of contaminant

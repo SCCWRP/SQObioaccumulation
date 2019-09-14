@@ -11,7 +11,7 @@
 plo_bsaf <- function(bsaf, cbiota, cntbsaf){
   
   # combine for plotting
-  toplo <- rescmb(bsaf, cbiota, cntbsaf)
+  toplo <- rescmb(bsaf, cbiota, cntbsaf) 
   
   p <- ggplot(toplo, aes(x = species, y = val)) + 
     geom_bar(stat = 'identity') + 
