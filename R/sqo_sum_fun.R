@@ -73,16 +73,15 @@ sqo_sum_fun <- function(wgtavg, mcsres, tischmthr, constants, finalsiteassess){
   out <- sums %>% 
     select(-thr) %>% 
     unnest %>% 
-    select(contam, wgt_obs, `25%`, `50%`, `75%`, wgt_est, chmscr, chmlab, lnkscr, lnklab, sitscr, sitlab) %>% 
-    rename(
-      Compound = contam,
-      `Weighted observed tissue conc. (ng/g)` = wgt_obs,
-      `Weighted estimated tissue conc. (ng/g)` = wgt_est,
-      `Chemical exposure score` = chmscr, 
+    select(
+      Compound = contam, 
+      `Observed tissue conc. (ng/g)` = wgt_obs,
       `Chemical exposure category` = chmlab, 
-      `Site linkage score` = lnkscr, 
+      `Estimated tissue conc. (ng/g)` = wgt_est,
+      `Site linkage 25%` = `25%`, 
+      `Site linkage 50%` = `50%`, 
+      `Site linkage 75%` = `75%`, 
       `Site linkage category` = lnklab, 
-      `Site assessment score` = sitscr, 
       `Site assessment category` = sitlab
     )
   

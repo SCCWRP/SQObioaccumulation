@@ -101,8 +101,7 @@ tab_bsaf(bsaf, cbiota, 'alphaChlordane')
     ## 2  1.814  4.747  7.266
 
 Run Monte Carlo simulations (MCS) with results from bioaccumulation
-model and additional
-inputs:
+model and additional inputs:
 
 ``` r
 mcsres <- mcs_fun(1000, indic_sum, mcsparms, constants, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0))
@@ -116,16 +115,15 @@ mcs_sum_fun(mcsres)
 
     ## # A tibble: 4 x 12
     ## # Groups:   Compound [4]
-    ##   Compound    `0%`    `1%`   `5%`  `10%`  `25%` `50%` `75%` `90%` `95%`
-    ##   <chr>      <dbl>   <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>
-    ## 1 Chlorda~ 0.0946  0.183   0.285  0.361  0.509  0.736 1.09  1.58   1.92
-    ## 2 DDT      0.0633  0.282   0.446  0.541  0.863  1.48  2.68  4.93   6.62
-    ## 3 Dieldrin 0.593   0.885   1.27   1.52   1.98   2.87  4.04  5.70   6.96
-    ## 4 PCB      0.00472 0.00905 0.0229 0.0353 0.0680 0.159 0.357 0.691  1.17
+    ##   Compound    `0%`   `1%`   `5%`  `10%`  `25%` `50%` `75%` `90%` `95%`
+    ##   <chr>      <dbl>  <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>
+    ## 1 Chlorda~ 0.143   0.203  0.295  0.363  0.502  0.743 1.07  1.50   1.94
+    ## 2 DDT      0.0842  0.202  0.392  0.541  0.914  1.64  2.85  4.49   6.24
+    ## 3 Dieldrin 0.619   0.885  1.21   1.46   1.91   2.79  3.89  5.46   6.70
+    ## 4 PCB      0.00369 0.0104 0.0222 0.0333 0.0671 0.153 0.359 0.744  1.23
     ## # ... with 2 more variables: `99%` <dbl>, `100%` <dbl>
 
-Plot cumulative distribution curves for
-MCS:
+Plot cumulative distribution curves for MCS:
 
 ``` r
 mcs_plo(mcsres, xmax = 3)
@@ -133,22 +131,20 @@ mcs_plo(mcsres, xmax = 3)
 
 <img src="README_files/figure-gfm/unnamed-chunk-9-1.png" width="80%" style="display: block; margin: auto;" />
 
-Get overall SQO
-assessment:
+Get overall SQO assessment:
 
 ``` r
 wgtavg <- wgt_avg_fun(mcsparms, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0))
 sqo_sum_fun(wgtavg, mcsres, tischmthr, constants, finalsiteassess)
 ```
 
-    ## # A tibble: 4 x 12
-    ##   Compound `Weighted obser~  `25%` `50%` `75%` `Weighted estim~
-    ##   <chr>               <dbl>  <dbl> <dbl> <dbl>            <dbl>
-    ## 1 Chlorda~             2.28 0.509  0.736 1.09             1.68 
-    ## 2 DDT                  4.85 0.863  1.48  2.68             7.17 
-    ## 3 Dieldrin             0.25 1.98   2.87  4.04             0.718
-    ## 4 PCB                 36.5  0.0680 0.159 0.357            5.80 
-    ## # ... with 6 more variables: `Chemical exposure score` <dbl>, `Chemical
-    ## #   exposure category` <chr>, `Site linkage score` <dbl>, `Site linkage
-    ## #   category` <chr>, `Site assessment score` <dbl>, `Site assessment
-    ## #   category` <chr>
+    ## # A tibble: 4 x 9
+    ##   Compound `Observed tissu~ `Chemical expos~ `Estimated tiss~
+    ##   <chr>               <dbl> <chr>                       <dbl>
+    ## 1 Chlorda~             2.28 Very Low                    1.70 
+    ## 2 DDT                  4.85 Very Low                    7.95 
+    ## 3 Dieldrin             0.25 Very Low                    0.697
+    ## 4 PCB                 36.5  Moderate                    5.58 
+    ## # ... with 5 more variables: `Site linkage 25%` <dbl>, `Site linkage
+    ## #   50%` <dbl>, `Site linkage 75%` <dbl>, `Site linkage category` <chr>,
+    ## #   `Site assessment category` <chr>
