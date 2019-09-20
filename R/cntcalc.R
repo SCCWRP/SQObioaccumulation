@@ -64,6 +64,7 @@ cntcalc <- function(contam, constants){
   # log koc
   contam <- contam %>% 
     mutate(
+      cs_ng.g = ifelse(is.na(cs_ng.g), 0, cs_ng.g),
       logkow_tempcor = round(log10(Kow), 2) - ((delt_uow / (log(10) * 0.0083145)) * ((1 / (273 + Temp)) - (1 / 298))),
       log_KowTS = log10(10 ^ logkow_tempcor* (10 ^ (0.0018 * LeBas_Molar_Volume * (0.5 * Sal / 35)))),
       phi = 1 / (1 + (xpoc * dpoc * alphapoc * 10 ^ log_KowTS) + (xdoc * ddoc * alphadoc * 10 ^ log_KowTS)),
