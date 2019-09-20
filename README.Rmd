@@ -70,7 +70,7 @@ tab_bsaf(bsaf, cbiota, 'alphaChlordane')
 Run Monte Carlo simulations (MCS) with results from bioaccumulation model and additional inputs:
 
 ```{r}
-mcsres <- mcs_fun(1000, indic_sum, mcsparms, constants, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0))
+mcsres <- mcs_fun(4000, indic_sum, mcsparms, constants, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0))
 ```
 
 Summarize MCS results:

@@ -104,7 +104,7 @@ Run Monte Carlo simulations (MCS) with results from bioaccumulation
 model and additional inputs:
 
 ``` r
-mcsres <- mcs_fun(1000, indic_sum, mcsparms, constants, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0))
+mcsres <- mcs_fun(4000, indic_sum, mcsparms, constants, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0))
 ```
 
 Summarize MCS results:
@@ -115,12 +115,12 @@ mcs_sum_fun(mcsres)
 
     ## # A tibble: 4 x 12
     ## # Groups:   Compound [4]
-    ##   Compound    `0%`   `1%`   `5%`  `10%`  `25%` `50%` `75%` `90%` `95%`
-    ##   <chr>      <dbl>  <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>
-    ## 1 Chlorda~ 0.143   0.203  0.295  0.363  0.502  0.743 1.07  1.50   1.94
-    ## 2 DDT      0.0842  0.202  0.392  0.541  0.914  1.64  2.85  4.49   6.24
-    ## 3 Dieldrin 0.619   0.885  1.21   1.46   1.91   2.79  3.89  5.46   6.70
-    ## 4 PCB      0.00369 0.0104 0.0222 0.0333 0.0671 0.153 0.359 0.744  1.23
+    ##   Compound    `0%`    `1%`   `5%`  `10%`  `25%` `50%` `75%` `90%` `95%`
+    ##   <chr>      <dbl>   <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>
+    ## 1 Chlorda~ 0.0750  0.185   0.295  0.359  0.512  0.752 1.10  1.56   1.93
+    ## 2 DDT      0.0734  0.195   0.388  0.518  0.840  1.52  2.74  4.51   6.20
+    ## 3 Dieldrin 0.482   0.823   1.23   1.47   1.97   2.75  3.94  5.45   6.62
+    ## 4 PCB      0.00191 0.00979 0.0231 0.0344 0.0709 0.155 0.347 0.709  1.08
     ## # ... with 2 more variables: `99%` <dbl>, `100%` <dbl>
 
 Plot cumulative distribution curves for MCS:
@@ -141,10 +141,10 @@ sqo_sum_fun(wgtavg, mcsres, tischmthr, constants, finalsiteassess)
     ## # A tibble: 4 x 9
     ##   Compound `Observed tissu~ `Chemical expos~ `Estimated tiss~
     ##   <chr>               <dbl> <chr>                       <dbl>
-    ## 1 Chlorda~             2.28 Very Low                    1.70 
-    ## 2 DDT                  4.85 Very Low                    7.95 
-    ## 3 Dieldrin             0.25 Very Low                    0.697
-    ## 4 PCB                 36.5  Moderate                    5.58 
+    ## 1 Chlorda~             2.28 Very Low                    1.72 
+    ## 2 DDT                  4.85 Very Low                    7.37 
+    ## 3 Dieldrin             0.25 Very Low                    0.689
+    ## 4 PCB                 36.5  Moderate                    5.67 
     ## # ... with 5 more variables: `Site linkage 25%` <dbl>, `Site linkage
     ## #   50%` <dbl>, `Site linkage 75%` <dbl>, `Site linkage category` <chr>,
     ## #   `Site assessment category` <chr>

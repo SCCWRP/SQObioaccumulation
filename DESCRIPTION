@@ -20,6 +20,7 @@ Imports:
     magrittr,
     purrr,
     rlang (>= 0.1.2),
+    shadowtext,
     tibble,
     tidyr
 RoxygenNote: 6.1.1
