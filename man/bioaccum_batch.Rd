@@ -4,17 +4,18 @@
 \alias{bioaccum_batch}
 \title{Run bioaccumulation model function FoodWeb_SQO in batch for all species, contaminants}
 \usage{
-bioaccum_batch(biota, contam, biota_preyprop, constants)
+bioaccum_batch(biota, contam, constants)
 }
 \arguments{
 \item{biota}{input biological data}
 
 \item{contam}{input contaminant data}
 
-\item{biota_preyprop}{input prey proportions}
-
 \item{constants}{input constants}
 }
 \description{
 Run bioaccumulation model function FoodWeb_SQO in batch for all species, contaminants
+}
+\details{
+data used from lazy load include \code{\link{biota_preyprop}}
 }

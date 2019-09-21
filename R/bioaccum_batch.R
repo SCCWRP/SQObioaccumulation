@@ -2,15 +2,16 @@
 #'
 #' @param biota input biological data
 #' @param contam input contaminant data
-#' @param biota_preyprop input prey proportions
 #' @param constants input constants
 #'
 #' @import tibble
 #' 
+#' @details data used from lazy load include \code{\link{biota_preyprop}}
+#' 
 #' @export
 #' 
 #' @importFrom magrittr "%>%"
-bioaccum_batch <- function(biota, contam, biota_preyprop, constants){
+bioaccum_batch <- function(biota, contam, constants){
   
   ### HAVE HARD-CODED THE PARAMETER NAMES
   theParamNames <- c("k1","k2", "GR", "Gv", "Gd", "Gf", "vlg", "vcg", "vng", "vwg", "kgb", 

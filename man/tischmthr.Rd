@@ -11,4 +11,7 @@ tischmthr
 \description{
 tischmthr data input
 }
+\details{
+used in \code{\link{sqo_sum_fun}}
+}
 \keyword{datasets}

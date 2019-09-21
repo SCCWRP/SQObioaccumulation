@@ -22,13 +22,13 @@ Run the bioaccumulation model with defaults:
 data(biota)
 data(constants)
 data(contam)
-data(biota_preyprop)
+data(mcsparm)
 
 # calculated contaminant inputs
 contamcalc <- cntcalc(contam, constants)
 
 # run model
-res <- bioaccum_batch(biota, contamcalc, biota_preyprop, constants)
+res <- bioaccum_batch(biota, contamcalc, constants)
 
 # assign output to separate objects
 cbiota <- res$cbiota
@@ -117,10 +117,10 @@ mcs_sum_fun(mcsres)
     ## # Groups:   Compound [4]
     ##   Compound    `0%`    `1%`   `5%`  `10%`  `25%` `50%` `75%` `90%` `95%`
     ##   <chr>      <dbl>   <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>
-    ## 1 Chlorda~ 0.124   0.197   0.291  0.367  0.521  0.759 1.10  1.61   2.01
-    ## 2 DDT      0.133   0.209   0.378  0.516  0.916  1.61  2.91  4.86   6.43
-    ## 3 Dieldrin 0.501   0.818   1.25   1.49   2.00   2.78  3.98  5.47   6.66
-    ## 4 PCB      0.00184 0.00751 0.0250 0.0348 0.0715 0.164 0.351 0.706  1.03
+    ## 1 Chlorda~ 0.0926  0.206   0.297  0.362  0.522  0.758 1.10  1.66   1.97
+    ## 2 DDT      0.109   0.233   0.399  0.553  0.860  1.61  2.76  4.70   6.29
+    ## 3 Dieldrin 0.429   0.877   1.22   1.44   1.97   2.84  4.00  5.44   6.69
+    ## 4 PCB      0.00343 0.00769 0.0216 0.0343 0.0684 0.147 0.331 0.817  1.23
     ## # ... with 2 more variables: `99%` <dbl>, `100%` <dbl>
 
 Plot cumulative distribution curves for
@@ -136,16 +136,16 @@ Get overall SQO assessment:
 
 ``` r
 wgtavg <- wgt_avg_fun(mcsparms)
-sqo_sum_fun(wgtavg, mcsres, tischmthr, constants, finalsiteassess)
+sqo_sum_fun(wgtavg, mcsres, constants)
 ```
 
     ## # A tibble: 4 x 9
     ##   Compound `Observed tissu~ `Chemical expos~ `Estimated tiss~
     ##   <chr>               <dbl> <chr>                       <dbl>
     ## 1 Chlorda~             2.28 Very Low                    1.73 
-    ## 2 DDT                  4.85 Very Low                    7.80 
-    ## 3 Dieldrin             0.25 Very Low                    0.694
-    ## 4 PCB                 36.5  Moderate                    5.97 
+    ## 2 DDT                  4.85 Very Low                    7.79 
+    ## 3 Dieldrin             0.25 Very Low                    0.710
+    ## 4 PCB                 36.5  Moderate                    5.38 
     ## # ... with 5 more variables: `Site linkage 25%` <dbl>, `Site linkage
     ## #   50%` <dbl>, `Site linkage 75%` <dbl>, `Site linkage category` <chr>,
     ## #   `Site assessment category` <chr>

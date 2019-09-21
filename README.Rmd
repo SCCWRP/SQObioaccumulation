@@ -32,13 +32,13 @@ Run the bioaccumulation model with defaults:
 data(biota)
 data(constants)
 data(contam)
-data(biota_preyprop)
+data(mcsparm)
 
 # calculated contaminant inputs
 contamcalc <- cntcalc(contam, constants)
 
 # run model
-res <- bioaccum_batch(biota, contamcalc, biota_preyprop, constants)
+res <- bioaccum_batch(biota, contamcalc, constants)
 
 # assign output to separate objects
 cbiota <- res$cbiota
@@ -89,7 +89,7 @@ Get overall SQO assessment:
 
 ```{r}
 wgtavg <- wgt_avg_fun(mcsparms)
-sqo_sum_fun(wgtavg, mcsres, tischmthr, constants, finalsiteassess)
+sqo_sum_fun(wgtavg, mcsres, constants)
 ```
 
 

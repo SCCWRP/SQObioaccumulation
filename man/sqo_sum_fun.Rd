@@ -4,19 +4,18 @@
 \alias{sqo_sum_fun}
 \title{SQO assessment summary}
 \usage{
-sqo_sum_fun(wgtavg, mcsres, tischmthr, constants, finalsiteassess)
+sqo_sum_fun(wgtavg, mcsres, constants)
 }
 \arguments{
 \item{wgtavg}{weighted average observed tissue concentrations from input, by contaminant category, output from \code{wgt_avg_fun}}
 
 \item{mcsres}{output from \code{mcs_fun}}
 
-\item{tischmthr}{lookup table for tissue chemistry thresholds}
-
 \item{constants}{constants from user inputs and lookup table, only SCT is used (sediment linkage threshold)}
-
-\item{finalsiteassess}{final site assessment lookup table}
 }
 \description{
 SQO assessment summary
+}
+\details{
+data used from lazy load include \code{\link{tischmthr}}, \code{\link{finalsiteassess}}
 }

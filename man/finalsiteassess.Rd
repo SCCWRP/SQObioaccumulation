@@ -11,4 +11,7 @@ finalsiteassess
 \description{
 finalsiteassess data input
 }
+\details{
+used in \code{\link{sqo_sum_fun}}
+}
 \keyword{datasets}

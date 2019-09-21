@@ -2,12 +2,12 @@
 #'
 #' @param wgtavg weighted average observed tissue concentrations from input, by contaminant category, output from \code{wgt_avg_fun}
 #' @param mcsres output from \code{mcs_fun}
-#' @param tischmthr lookup table for tissue chemistry thresholds
 #' @param constants constants from user inputs and lookup table, only SCT is used (sediment linkage threshold)
-#' @param finalsiteassess final site assessment lookup table
 #'
+#' @details data used from lazy load include \code{\link{tischmthr}}, \code{\link{finalsiteassess}}
+#' 
 #' @export
-sqo_sum_fun <- function(wgtavg, mcsres, tischmthr, constants, finalsiteassess){
+sqo_sum_fun <- function(wgtavg, mcsres, constants){
   
   # category scores and labels, final labels
   levs <- c('1', '2', '3', '4', '5')
