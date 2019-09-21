@@ -104,7 +104,7 @@ Run Monte Carlo simulations (MCS) with results from bioaccumulation
 model and additional inputs:
 
 ``` r
-mcsres <- mcs_fun(4000, indic_sum, mcsparms, constants, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0))
+mcsres <- mcs_fun(1000, indic_sum, mcsparms, constants, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0))
 ```
 
 Summarize MCS results:
@@ -117,10 +117,10 @@ mcs_sum_fun(mcsres)
     ## # Groups:   Compound [4]
     ##   Compound    `0%`    `1%`   `5%`  `10%`  `25%` `50%` `75%` `90%` `95%`
     ##   <chr>      <dbl>   <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>
-    ## 1 Chlorda~ 0.0750  0.185   0.295  0.359  0.512  0.752 1.10  1.56   1.93
-    ## 2 DDT      0.0734  0.195   0.388  0.518  0.840  1.52  2.74  4.51   6.20
-    ## 3 Dieldrin 0.482   0.823   1.23   1.47   1.97   2.75  3.94  5.45   6.62
-    ## 4 PCB      0.00191 0.00979 0.0231 0.0344 0.0709 0.155 0.347 0.709  1.08
+    ## 1 Chlorda~ 0.123   0.184   0.283  0.346  0.472  0.688 1.06  1.52   1.85
+    ## 2 DDT      0.0866  0.234   0.358  0.509  0.893  1.52  2.67  4.51   6.62
+    ## 3 Dieldrin 0.628   0.949   1.23   1.52   2.05   2.88  4.19  5.40   6.48
+    ## 4 PCB      0.00545 0.00978 0.0206 0.0352 0.0711 0.152 0.340 0.698  1.05
     ## # ... with 2 more variables: `99%` <dbl>, `100%` <dbl>
 
 Plot cumulative distribution curves for MCS:
@@ -141,10 +141,10 @@ sqo_sum_fun(wgtavg, mcsres, tischmthr, constants, finalsiteassess)
     ## # A tibble: 4 x 9
     ##   Compound `Observed tissu~ `Chemical expos~ `Estimated tiss~
     ##   <chr>               <dbl> <chr>                       <dbl>
-    ## 1 Chlorda~             2.28 Very Low                    1.72 
-    ## 2 DDT                  4.85 Very Low                    7.37 
-    ## 3 Dieldrin             0.25 Very Low                    0.689
-    ## 4 PCB                 36.5  Moderate                    5.67 
+    ## 1 Chlorda~             2.28 Very Low                    1.57 
+    ## 2 DDT                  4.85 Very Low                    7.36 
+    ## 3 Dieldrin             0.25 Very Low                    0.721
+    ## 4 PCB                 36.5  Moderate                    5.56 
     ## # ... with 5 more variables: `Site linkage 25%` <dbl>, `Site linkage
     ## #   50%` <dbl>, `Site linkage 75%` <dbl>, `Site linkage category` <chr>,
     ## #   `Site assessment category` <chr>

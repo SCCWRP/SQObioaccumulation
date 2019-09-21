@@ -28,10 +28,10 @@ mcs_plo <- function(mcsres, alpha = 0.4, xmax = NULL){
     stat_ecdf(aes(sitsedlnk, linetype = contam),
               geom = "line", size = 1.25) +
     geom_vline(xintercept = 0.5, lty = "dashed", color = "blue") +
-    geom_shadowtext(aes(x = xmax - (0.1 * xmax), y = .125, label = "High"), size = 5, colour = rctcols[1]) +
-    geom_shadowtext(aes(x = xmax - (0.1 * xmax), y = .375, label = "Moderate"), size = 5, colour = rctcols[2]) +
-    geom_shadowtext(aes(x = xmax - (0.1 * xmax), y = .615, label = "Low"), size = 5, colour = rctcols[3]) +
-    geom_shadowtext(aes(x = xmax - (0.1 * xmax), y = .875, label = "Very Low"), size = 5, colour = rctcols[4]) +
+    geom_shadowtext(aes(x = xmax - (0.1 * xmax), y = .125, label = "High"), size = 6, colour = rctcols[1], check_overlap = T) +
+    geom_shadowtext(aes(x = xmax - (0.1 * xmax), y = .375, label = "Moderate"), size = 6, colour = rctcols[2], check_overlap = T) +
+    geom_shadowtext(aes(x = xmax - (0.1 * xmax), y = .615, label = "Low"), size = 6, colour = rctcols[3], check_overlap = T) +
+    geom_shadowtext(aes(x = xmax - (0.1 * xmax), y = .875, label = "Very Low"), size = 6, colour = rctcols[4], check_overlap = T) +
     labs(x = 'Site Linkage Factor',
          y = 'Cumulative Proportion',
          title = 'Site Linkage',
