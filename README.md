@@ -117,10 +117,10 @@ mcs_sum_fun(mcsres)
     ## # Groups:   Compound [4]
     ##   Compound    `0%`    `1%`   `5%`  `10%`  `25%` `50%` `75%` `90%` `95%`
     ##   <chr>      <dbl>   <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>
-    ## 1 Chlorda~ 0.0926  0.206   0.297  0.362  0.522  0.758 1.10  1.66   1.97
-    ## 2 DDT      0.109   0.233   0.399  0.553  0.860  1.61  2.76  4.70   6.29
-    ## 3 Dieldrin 0.429   0.877   1.22   1.44   1.97   2.84  4.00  5.44   6.69
-    ## 4 PCB      0.00343 0.00769 0.0216 0.0343 0.0684 0.147 0.331 0.817  1.23
+    ## 1 Chlorda~ 0.139   0.207   0.297  0.367  0.493  0.735 1.09  1.56   1.92
+    ## 2 DDT      0.0800  0.197   0.352  0.493  0.857  1.56  2.74  4.73   6.51
+    ## 3 Dieldrin 0.405   0.900   1.23   1.49   2.08   2.94  4.03  5.49   6.59
+    ## 4 PCB      0.00245 0.00814 0.0237 0.0346 0.0718 0.152 0.346 0.687  1.18
     ## # ... with 2 more variables: `99%` <dbl>, `100%` <dbl>
 
 Plot cumulative distribution curves for
@@ -142,10 +142,10 @@ sqo_sum_fun(wgtavg, mcsres, constants)
     ## # A tibble: 4 x 9
     ##   Compound `Observed tissu~ `Chemical expos~ `Estimated tiss~
     ##   <chr>               <dbl> <chr>                       <dbl>
-    ## 1 Chlorda~             2.28 Very Low                    1.73 
-    ## 2 DDT                  4.85 Very Low                    7.79 
-    ## 3 Dieldrin             0.25 Very Low                    0.710
-    ## 4 PCB                 36.5  Moderate                    5.38 
+    ## 1 Chlorda~             2.28 Very Low                    1.68 
+    ## 2 DDT                  4.85 Very Low                    7.56 
+    ## 3 Dieldrin             0.25 Very Low                    0.734
+    ## 4 PCB                 36.5  Moderate                    5.56 
     ## # ... with 5 more variables: `Site linkage 25%` <dbl>, `Site linkage
     ## #   50%` <dbl>, `Site linkage 75%` <dbl>, `Site linkage category` <chr>,
     ## #   `Site assessment category` <chr>

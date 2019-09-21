@@ -43,7 +43,7 @@ mcs_plo <- function(mcsres, alpha = 0.4, xmax = NULL){
       legend.position="top", 
       legend.title = element_blank(), 
       legend.text = element_text(size = 14),
-      legend.key.width = unit(2,"cm")
+      legend.key.width = unit(2.5,"cm")
       ) + 
     coord_cartesian(xlim = c(0, xmax), ylim = c(0, 1))
 
