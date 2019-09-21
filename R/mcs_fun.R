@@ -13,7 +13,7 @@ mcs_fun <- function(nsim, indic_sum, mcsparms, constants){
   
   # propseaf
   propseaf <- mcsparms %>% 
-    filter(grepl('^indic[0-9]seaf', MCSvar)) %>% 
+    filter(grepl('^indic[0-9]propseaf', MCSvar)) %>% 
     mutate(
       Value = ifelse(is.na(Value), 0, Value)
     ) %>% 
@@ -31,7 +31,7 @@ mcs_fun <- function(nsim, indic_sum, mcsparms, constants){
   
   # mean and se values from observed contaminants, from user inputs
   meanse <- mcsparms %>% 
-    filter(grepl('^indic', MCSvar) & !grepl('^indic[0-9]seaf', MCSvar)) %>% 
+    filter(grepl('^indic', MCSvar) & !grepl('^indic[0-9]propseaf', MCSvar)) %>% 
     mutate(
       var = case_when(
         grepl('X$', MCSvar) ~ 'X', 

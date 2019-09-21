@@ -7,7 +7,7 @@ wgt_avg_fun <- function(mcsparms){
   
   # propseaf
   propseaf <- mcsparms %>% 
-    filter(grepl('^indic[0-9]seaf', MCSvar)) %>% 
+    filter(grepl('^indic[0-9]propseaf', MCSvar)) %>% 
     mutate(
       Value = ifelse(is.na(Value), 0, Value)
     ) %>% 
