@@ -15,32 +15,22 @@ modtiscon_mcs_fun <- function(nsim, meanse, propseaf){
     ) %>% 
     dplyr::select(-SD, -X) %>% 
     unnest
-  
+
   # weighted tissue concentrations across guilds for each contam, all sims
   out <- sims %>% 
-    dplyr::group_by(i) %>% 
-    nest() %>% 
+    dplyr::group_by(i, contam) %>% 
+    arrange(i, contam, MCSvar) %>% 
     mutate(
-      wgtave = purrr::map(data, function(x){
-        
-        sumprod <- x %>% 
-          arrange(contam, MCSvar) %>% 
-          mutate(
-            sims = case_when(
-              is.na(sims) ~ 0, 
-              T ~ sims
-            )
-          ) %>% 
-          group_by(contam) %>% 
-          summarise(
-            wgtave = sims %*% propseaf
-          )
-        
-        return(sumprod)
-        
-      })
+      sims = case_when(
+        sum(is.na(sims)) == 9 ~ NaN,
+        is.na(sims) ~ 0, 
+        T ~ sims
+      )
     ) %>% 
-    dplyr::select(-data)
+    summarise(
+      wgtave = sims %*% propseaf
+    )
+ 
   
   return(out)
   

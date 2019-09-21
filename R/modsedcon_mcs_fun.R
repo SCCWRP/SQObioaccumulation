@@ -43,32 +43,21 @@ modsedcon_mcs_fun <- function(nsim, sedmeanse, propseaf, SUF, CVBAF, indic_sum){
       estcnc = sims.x * suf * sims.y
     ) %>% 
     dplyr::select(-MCSvar, -sims.x, -sims.y, -suf)
-  
-  # weighted sediment concentrations across guilds for each contam, all sims
+
+  # weighted tissue concentrations across guilds for each contam, all sims
   out <- estcncsims %>% 
-    dplyr::group_by(i) %>% 
-    nest() %>% 
+    dplyr::group_by(i, contam) %>% 
+    arrange(i, contam, species) %>% 
     mutate(
-      wgtave = purrr::map(data, function(x){
-        
-        sumprod <- x %>% 
-          arrange(contam, species) %>% 
-          mutate(
-            estcnc = case_when(
-              is.na(estcnc) ~ 0, 
-              T ~ estcnc
-            )
-          ) %>% 
-          group_by(contam) %>% 
-          summarise(
-            wgtave = estcnc %*% propseaf
-          )
-        
-        return(sumprod)
-        
-      })
+      estcnc = case_when(
+        sum(is.na(estcnc)) == 9 ~ NaN,
+        is.na(estcnc) ~ 0, 
+        T ~ estcnc
+      )
     ) %>% 
-    dplyr::select(-data)
+    summarise(
+      wgtave = estcnc %*% propseaf
+    )
   
   return(out)
   

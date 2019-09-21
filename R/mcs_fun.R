@@ -40,7 +40,10 @@ mcs_fun <- function(nsim, indic_sum, mcsparms, constants){
       contam = gsub('^indic[0-9]|X$|SD$', '', MCSvar), 
       MCSvar = gsub('(^indic[0-9]).*$', '\\1', MCSvar)
     ) %>% 
-    spread(var, Value)
+    spread(var, Value) %>% 
+    mutate(
+      SD = ifelse(!is.na(X) & is.na(SD), 0, SD)
+    )
   
   # mean and se values for sediment contaminants, from user inputs
   sedmeanse <- mcsparms %>% 
@@ -53,13 +56,16 @@ mcs_fun <- function(nsim, indic_sum, mcsparms, constants){
       contam = gsub('^sed|X$|SD$', '', MCSvar), 
       MCSvar = gsub('(^sed).*$', '\\1', MCSvar)
     ) %>% 
-    spread(var, Value)
+    spread(var, Value) %>% 
+    mutate(
+      SD = ifelse(!is.na(X) & is.na(SD), 0, SD)
+    )
   
   ##
   # modeled tissue concentration for consumption risk, mcs
   # returns weighted concentrations across all sims
   modtiscon <- modtiscon_mcs_fun(nsim, meanse, propseaf)
-  
+  browser()
   ##
   # site use function sims
   SUF <- suf_mcs_fun(nsim, constants, mcsparms)
@@ -83,14 +89,13 @@ mcs_fun <- function(nsim, indic_sum, mcsparms, constants){
   # modeled sediment contribution to tissue concentration, mcs
   # returns weighted concentrations across all sims
   modsedcon <- modsedcon_mcs_fun(nsim, sedmeanse, propseaf, SUF, CVBAF, indic_sum)
-  
+
   ## 
   # combine modeled tissue and sediment concentrations to get site linkages
   out <- modtiscon %>% 
-    full_join(modsedcon, by = 'i') %>% 
-    tidyr::unnest() %>% 
-    mutate(sitsedlnk = wgtave1 / wgtave) %>% 
-    dplyr::select(-wgtave, -contam1, -wgtave1)
+    full_join(modsedcon, by = c('i', 'contam')) %>% 
+    mutate(sitsedlnk = wgtave.y / wgtave.x) %>% # sed / tis
+    dplyr::select(-wgtave.x, -wgtave.y)
   
   return(out)
   
