@@ -65,7 +65,7 @@ mcs_fun <- function(nsim, indic_sum, mcsparms, constants){
   # modeled tissue concentration for consumption risk, mcs
   # returns weighted concentrations across all sims
   modtiscon <- modtiscon_mcs_fun(nsim, meanse, propseaf)
-  browser()
+
   ##
   # site use function sims
   SUF <- suf_mcs_fun(nsim, constants, mcsparms)
