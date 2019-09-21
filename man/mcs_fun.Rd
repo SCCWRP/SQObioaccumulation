@@ -4,8 +4,7 @@
 \alias{mcs_fun}
 \title{MCS function}
 \usage{
-mcs_fun(nsim, indic_sum, mcsparms, constants, propseaf = c(0, 0.5, 0, 0,
-  0.5, 0, 0, 0, 0))
+mcs_fun(nsim, indic_sum, mcsparms, constants)
 }
 \arguments{
 \item{nsim}{number of MC sims}
@@ -15,8 +14,6 @@ mcs_fun(nsim, indic_sum, mcsparms, constants, propseaf = c(0, 0.5, 0, 0,
 \item{mcsparms}{MCS parameter inputs}
 
 \item{constants}{constants inputs}
-
-\item{propseaf}{numeric vector indicating proportion of human diet for each guild species, must sum to 1 and have length 9}
 }
 \description{
 MCS function

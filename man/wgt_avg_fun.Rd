@@ -4,12 +4,10 @@
 \alias{wgt_avg_fun}
 \title{Calculate weighted average observed tissue concentration (ng/g), from empirical data}
 \usage{
-wgt_avg_fun(mcsparms, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0))
+wgt_avg_fun(mcsparms)
 }
 \arguments{
 \item{mcsparms}{input mcsparms data frame, observed average concentrations extracted}
-
-\item{propseaf}{numeric vector indicating proportion of human diet for each guild species}
 }
 \description{
 Calculate weighted average observed tissue concentration (ng/g), from empirical data

@@ -4,17 +4,25 @@
 #' @param indic_sum output from indic_sum_fun
 #' @param mcsparms MCS parameter inputs
 #' @param constants constants inputs
-#' @param propseaf numeric vector indicating proportion of human diet for each guild species, must sum to 1 and have length 9
 #'
 #' @export
-mcs_fun <- function(nsim, indic_sum, mcsparms, constants, propseaf = c(0, 0.5, 0, 0, 0.5, 0, 0, 0, 0)){
+mcs_fun <- function(nsim, indic_sum, mcsparms, constants){
+
+  ##
+  # inputs 
+  
+  # propseaf
+  propseaf <- mcsparms %>% 
+    filter(grepl('^indic[0-9]seaf', MCSvar)) %>% 
+    mutate(
+      Value = ifelse(is.na(Value), 0, Value)
+    ) %>% 
+    arrange(MCSvar) %>% 
+    pull(Value)
   
   # sanity checks
   stopifnot(length(propseaf) == 9)
   stopifnot(sum(propseaf) == 1)
-  
-  ##
-  # inputs 
   
   # CVBAF
   CVBAF <- mcsparms %>% 
@@ -23,7 +31,7 @@ mcs_fun <- function(nsim, indic_sum, mcsparms, constants, propseaf = c(0, 0.5, 0
   
   # mean and se values from observed contaminants, from user inputs
   meanse <- mcsparms %>% 
-    filter(grepl('^indic', MCSvar)) %>% 
+    filter(grepl('^indic', MCSvar) & !grepl('^indic[0-9]seaf', MCSvar)) %>% 
     mutate(
       var = case_when(
         grepl('X$', MCSvar) ~ 'X', 
