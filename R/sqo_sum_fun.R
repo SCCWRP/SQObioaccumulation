@@ -13,7 +13,7 @@ sqo_sum_fun <- function(wgtavg, mcsres, constants){
   levs <- c('1', '2', '3', '4', '5')
   labs <- c('Very Low', 'Low', 'Moderate', 'High', 'Very High')
   flabs <- c('Unimpacted', 'Likely Unimpacted', 'Possibly Impacted', 'Likely Impacted', 'Clearly Impacted')
-  
+
   # sediment linkage threshold
   SCT <- constants %>% 
     filter(Constant %in% 'SCT') %>% 
@@ -57,7 +57,7 @@ sqo_sum_fun <- function(wgtavg, mcsres, constants){
     ) %>% 
     rowwise() %>% 
     mutate(
-      lnkscr = 4 - findInterval(SCT, c(`25%`, `50%`, `75%`)), 
+      lnkscr = ifelse(is.na(`25%`), NA, 4 - findInterval(SCT, c(`25%`, `50%`, `75%`))), 
       lnklab = factor(as.character(lnkscr), levels = levs, labels = labs), 
       lnklab = as.character(lnklab)
     ) %>% 

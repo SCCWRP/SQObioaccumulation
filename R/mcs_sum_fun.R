@@ -11,8 +11,8 @@ mcs_sum_fun <- function(mcsres){
     nest %>% 
     mutate(
       percnt = purrr::map(data, function(x){
-        
-        prc <- quantile(x$sitsedlnk, c(0, .01, .05, .1, 0.25, .5, .75, 0.9, .95, .99, 1)) %>% 
+    
+        prc <- quantile(x$sitsedlnk, c(0, .01, .05, .1, 0.25, .5, .75, 0.9, .95, .99, 1), na.rm = TRUE) %>% 
           enframe 
         
         return(prc)

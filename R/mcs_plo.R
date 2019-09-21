@@ -12,7 +12,7 @@ mcs_plo <- function(mcsres, alpha = 0.4, xmax = NULL){
   # input
   toplo <- mcsres 
   if(is.null(xmax))
-    xmax <- quantile(toplo$sitsedlnk, 0.95)[[1]]
+    xmax <- quantile(toplo$sitsedlnk, 0.95, na.rm = TRUE)[[1]]
 
   rctcols <- c('tomato1', 'lightgoldenrod1', 'lightyellow', 'lightgreen')
   
