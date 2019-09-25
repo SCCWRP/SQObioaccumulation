@@ -14,7 +14,7 @@ modtiscon_mcs_fun <- function(nsim, meanse, propseaf){
       ests = purrr::pmap(list(nsim, X, SD), genlognorm_fun)
     ) %>% 
     dplyr::select(-SD, -X) %>% 
-    unnest
+    unnest(ests)
 
   # weighted tissue concentrations across guilds for each contam, all sims
   out <- sims %>% 

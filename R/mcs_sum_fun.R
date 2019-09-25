@@ -20,7 +20,7 @@ mcs_sum_fun <- function(mcsres){
       })
     ) %>% 
     dplyr::select(-data) %>% 
-    unnest %>% 
+    unnest(percnt) %>% 
     mutate(name = factor(name, levels = c('0%', '1%', '5%', '10%', '25%', '50%', '75%', '90%', '95%', '99%', '100%'))) %>% 
     rename(
       percentile = name,

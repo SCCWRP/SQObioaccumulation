@@ -64,7 +64,7 @@ suf_mcs_fun <- function(nsim, constants, mcsparms){
       })
     ) %>% 
     dplyr::select(-SD, -X) %>% 
-    unnest %>% 
+    unnest(suf) %>% 
     mutate(
       sims = pmin(1, sims)
     ) %>% 

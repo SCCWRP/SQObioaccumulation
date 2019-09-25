@@ -72,7 +72,7 @@ sqo_sum_fun <- function(wgtavg, mcsres, constants){
   # final formatting (no calcs)
   out <- sums %>% 
     select(-thr) %>% 
-    unnest %>% 
+    unnest(chmscr) %>% 
     select(
       Compound = contam, 
       `Observed tissue conc. (ng/g)` = wgt_obs,

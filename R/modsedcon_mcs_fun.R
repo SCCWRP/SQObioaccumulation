@@ -17,7 +17,7 @@ modsedcon_mcs_fun <- function(nsim, sedmeanse, propseaf, SUF, CVBAF, indic_sum){
       ests = purrr::pmap(list(nsim, X, SD), genlognorm_fun) 
     ) %>% 
     dplyr::select(-SD, -X) %>% 
-    unnest %>% 
+    unnest(ests) %>% 
     dplyr::ungroup()
   
   # bioaccumulation sims
@@ -36,7 +36,7 @@ modsedcon_mcs_fun <- function(nsim, sedmeanse, propseaf, SUF, CVBAF, indic_sum){
   
   # combine sediment sims with biosims and SUF
   estcncsims <- biosims %>% 
-    unnest %>% 
+    unnest(ests) %>% 
     full_join(sedsims, ., by = c('contam', 'i')) %>% 
     full_join(SUF, by = c('i', 'species')) %>% 
     mutate(

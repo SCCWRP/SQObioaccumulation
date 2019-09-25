@@ -32,7 +32,7 @@ Run the bioaccumulation model with defaults:
 data(biota)
 data(constants)
 data(contam)
-data(mcsparm)
+data(mcsparms)
 
 # calculated contaminant inputs
 contamcalc <- cntcalc(contam, constants)
