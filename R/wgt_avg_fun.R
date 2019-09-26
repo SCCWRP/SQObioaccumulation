@@ -35,7 +35,10 @@ wgt_avg_fun <- function(mcsparms){
   wgt_avg <- contobs %>% 
     group_by(contam) %>%
     summarise(
-      wgt_obs = Value %*% propseaf
+      wgt_obs = case_when(
+        sum(Value) == 0 ~ NaN, 
+        sum(Value) != 0 ~ Value %*% propseaf
+      )
     )
   
   return(wgt_avg)
