@@ -67,7 +67,8 @@ sqo_sum_fun <- function(wgtavg, mcsres, constants){
       sitscr = as.numeric(as.character(sitscr)), 
       sitlab = factor(sitscr, levels = levs, labels = flabs), 
       sitlab = as.character(sitlab)
-    )
+    ) %>% 
+    mutate_if(is.numeric, round, 2)
   
   # final formatting (no calcs)
   out <- sums %>% 
