@@ -12,7 +12,7 @@ indic_sum_fun <- function(cbiota, contamcalc){
   
   # cbiota long format
   cbiota_lng <- cbiota %>% 
-    gather('Chem', 'val', -species)
+    pivot_longer(-species, names_to = 'Chem', values_to = 'val')
   
   # contaminant inputs
   contams <- contamcalc %>% 
@@ -28,9 +28,9 @@ indic_sum_fun <- function(cbiota, contamcalc){
       conc = sum(val)
     ) %>% 
     ungroup %>% 
-    gather('var', 'val', calc, conc) %>% 
+    pivot_longer(c(calc, conc), names_to = 'var', values_to = 'val') %>% 
     unite('var', ChemGroup, var) %>% 
-    spread(var, val)
+    pivot_wider(names_from = var, values_from = val)
   
   # prettify
   out <- sumdat %>% 

@@ -28,7 +28,7 @@ suf_mcs_fun <- function(nsim, constants, mcsparms){
       species = gsub('^HR', 'indic', species),
       species = gsub('X$|SD$', '', species)
     ) %>% 
-    spread(var, Value)
+    pivot_wider(names_from = var, values_from = Value)
   
   # home range sims
   sufsims <- hrvals %>% 

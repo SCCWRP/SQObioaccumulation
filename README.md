@@ -22,7 +22,7 @@ Run the bioaccumulation model with defaults:
 data(biota)
 data(constants)
 data(contam)
-data(mcsparm)
+data(mcsparms)
 
 # calculated contaminant inputs
 contamcalc <- cntcalc(contam, constants)
@@ -75,30 +75,20 @@ contaminant:
 tab_bsaf(bsaf, cbiota, 'alphaChlordane')
 ```
 
-    ##                    Output Sediment Phytoplankton Submerged Macrophyte
-    ## 1 Tissue conc. (ng/g wet)      0.5         0.177                0.166
-    ## 2                    BSAF      1.0         0.355                0.331
-    ##   Zooplankton Small polychaete (e.g., Harmothoe imbricata)
-    ## 1       0.302                                        0.487
-    ## 2       0.605                                        0.975
-    ##   Large polychaete (e.g., Neanthes) Amphipod Cumacean Mysid
-    ## 1                             1.083    0.498    0.381 0.395
-    ## 2                             2.166    0.996    0.762 0.789
-    ##   Bivalve mollusk Decapod crab Crangon shrimp Forage fish - herbivore
-    ## 1           0.328        1.517          0.653                   0.387
-    ## 2           0.655        3.035          1.305                   0.774
-    ##   Forage fish - planktivore Forage fish - mixed diet i
-    ## 1                     1.622                      1.558
-    ## 2                     3.244                      3.115
-    ##   Forage fish - mixed diet ii Forage fish  - primarily benthivore
-    ## 1                       4.289                               2.144
-    ## 2                       8.579                               4.288
-    ##   Forage fish - benthivore indic1 indic2 indic3 indic4 indic5 indic6
-    ## 1                    4.111  3.964  4.139  3.866  4.470  1.589  3.443
-    ## 2                    8.223  7.929  8.279  7.732  8.941  3.179  6.886
-    ##   indic7 indic8 indic9
-    ## 1  0.907  2.374  3.633
-    ## 2  1.814  4.747  7.266
+    ## # A tibble: 2 x 28
+    ##   Output Sediment Phytoplankton `Submerged Macr~ Zooplankton
+    ##   <fct>     <dbl>         <dbl>            <dbl>       <dbl>
+    ## 1 Tissu~      0.5         0.177            0.166       0.302
+    ## 2 BSAF        1           0.355            0.331       0.605
+    ## # ... with 23 more variables: `Small polychaete (e.g., Harmothoe
+    ## #   imbricata)` <dbl>, `Large polychaete (e.g., Neanthes)` <dbl>,
+    ## #   Amphipod <dbl>, Cumacean <dbl>, Mysid <dbl>, `Bivalve mollusk` <dbl>,
+    ## #   `Decapod crab` <dbl>, `Crangon shrimp` <dbl>, `Forage fish -
+    ## #   herbivore` <dbl>, `Forage fish - planktivore` <dbl>, `Forage fish -
+    ## #   mixed diet i` <dbl>, `Forage fish - mixed diet ii` <dbl>, `Forage fish
+    ## #   - primarily benthivore` <dbl>, `Forage fish - benthivore` <dbl>,
+    ## #   indic1 <dbl>, indic2 <dbl>, indic3 <dbl>, indic4 <dbl>, indic5 <dbl>,
+    ## #   indic6 <dbl>, indic7 <dbl>, indic8 <dbl>, indic9 <dbl>
 
 Run Monte Carlo simulations (MCS) with results from bioaccumulation
 model and additional inputs:
@@ -117,14 +107,13 @@ mcs_sum_fun(mcsres)
     ## # Groups:   Compound [4]
     ##   Compound    `0%`    `1%`   `5%`  `10%`  `25%` `50%` `75%` `90%` `95%`
     ##   <chr>      <dbl>   <dbl>  <dbl>  <dbl>  <dbl> <dbl> <dbl> <dbl> <dbl>
-    ## 1 Chlorda~ 0.139   0.207   0.297  0.367  0.493  0.735 1.09  1.56   1.92
-    ## 2 DDT      0.0800  0.197   0.352  0.493  0.857  1.56  2.74  4.73   6.51
-    ## 3 Dieldrin 0.405   0.900   1.23   1.49   2.08   2.94  4.03  5.49   6.59
-    ## 4 PCB      0.00245 0.00814 0.0237 0.0346 0.0718 0.152 0.346 0.687  1.18
+    ## 1 Chlorda~ 0.147   0.208   0.287  0.347  0.501  0.755 1.14  1.58   1.93
+    ## 2 DDT      0.151   0.210   0.385  0.524  0.909  1.59  2.74  4.70   6.54
+    ## 3 Dieldrin 0.656   0.823   1.23   1.46   2.03   2.85  3.90  5.45   6.71
+    ## 4 PCB      0.00417 0.00792 0.0223 0.0320 0.0636 0.142 0.322 0.760  1.15
     ## # ... with 2 more variables: `99%` <dbl>, `100%` <dbl>
 
-Plot cumulative distribution curves for
-MCS:
+Plot cumulative distribution curves for MCS:
 
 ``` r
 mcs_plo(mcsres, xmax = 3)
@@ -142,10 +131,10 @@ sqo_sum_fun(wgtavg, mcsres, constants)
     ## # A tibble: 4 x 9
     ##   Compound `Observed tissu~ `Chemical expos~ `Estimated tiss~
     ##   <chr>               <dbl> <chr>                       <dbl>
-    ## 1 Chlorda~             2.28 Very Low                    1.68 
-    ## 2 DDT                  4.85 Very Low                    7.56 
-    ## 3 Dieldrin             0.25 Very Low                    0.734
-    ## 4 PCB                 36.5  Moderate                    5.56 
+    ## 1 Chlorda~             2.28 Very Low                    1.72 
+    ## 2 DDT                  4.85 Very Low                    7.69 
+    ## 3 Dieldrin             0.25 Very Low                    0.711
+    ## 4 PCB                 36.5  Moderate                    5.17 
     ## # ... with 5 more variables: `Site linkage 25%` <dbl>, `Site linkage
     ## #   50%` <dbl>, `Site linkage 75%` <dbl>, `Site linkage category` <chr>,
     ## #   `Site assessment category` <chr>

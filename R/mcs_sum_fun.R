@@ -26,7 +26,7 @@ mcs_sum_fun <- function(mcsres){
       percentile = name,
       Compound = contam
     ) %>% 
-    spread(percentile, value)
+    pivot_wider(names_from = percentile, values_from = value)
   
   
   return(persitsed)

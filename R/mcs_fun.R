@@ -40,7 +40,7 @@ mcs_fun <- function(nsim, indic_sum, mcsparms, constants){
       contam = gsub('^indic[0-9]|X$|SD$', '', MCSvar), 
       MCSvar = gsub('(^indic[0-9]).*$', '\\1', MCSvar)
     ) %>% 
-    spread(var, Value) %>% 
+    pivot_wider(names_from = var, values_from = Value) %>% 
     mutate(
       SD = ifelse(!is.na(X) & is.na(SD), 0, SD)
     )
@@ -56,7 +56,7 @@ mcs_fun <- function(nsim, indic_sum, mcsparms, constants){
       contam = gsub('^sed|X$|SD$', '', MCSvar), 
       MCSvar = gsub('(^sed).*$', '\\1', MCSvar)
     ) %>% 
-    spread(var, Value) %>% 
+    pivot_wider(names_from = var, values_from = Value) %>% 
     mutate(
       SD = ifelse(!is.na(X) & is.na(SD), 0, SD)
     )

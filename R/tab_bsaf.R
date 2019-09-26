@@ -13,7 +13,7 @@ tab_bsaf <- function(bsaf, cbiota, cntbsaf = NULL){
   # combine for plotting
   totab <- rescmb(bsaf, cbiota, cntbsaf) %>% 
     mutate(val = round(val, 3)) %>% 
-    spread(species, val) %>% 
+    pivot_wider(names_from = species, values_from = val) %>% 
     rename(Output = var) %>% 
     mutate(Output = factor(Output, levels = c('Tissue conc. (ng/g wet)', 'BSAF'))) %>% 
     arrange(Output)

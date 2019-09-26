@@ -27,14 +27,14 @@ sqo_sum_fun <- function(wgtavg, mcsres, constants){
   # quartiles from MCSsum
   mcsres <- mcsres %>% 
     mcs_sum_fun %>% 
-    gather('percentile', 'value', -Compound) %>% 
+    pivot_longer(-Compound, names_to = 'percentile', values_to = 'value') %>% 
     rename(contam = Compound) %>% 
     filter(grepl('25|50|75', percentile))
   
   # combined data to get category outcomes
   cmb <- wgtavg %>% 
     full_join(mcsres, by = 'contam') %>% 
-    spread(percentile, value) %>% 
+    pivot_wider(names_from = percentile, values_from = value) %>% 
     full_join(tischmthr, by = 'contam') 
   
   # get category outcomes

@@ -16,16 +16,16 @@ rescmb <- function(bsaf, cbiota, cntbsaf = NULL){
 
   # bsaf
   bsaf <- bsaf %>% 
-    gather('Contaminant', 'BSAF', -species)
+    pivot_longer(-species, names_to = 'Contaminant', values_to = 'BSAF')
   
   # cbiota
   cbiota <- cbiota %>%
-    gather('Contaminant', 'Tissue conc. (ng/g wet)', -species)
+    pivot_longer(-species, names_to = 'Contaminant', values_to = 'Tissue conc. (ng/g wet)')
   
   # combine both
   out <- bsaf %>% 
     left_join(cbiota, by = c('species', 'Contaminant')) %>% 
-    gather('var', 'val', BSAF, `Tissue conc. (ng/g wet)`) %>% 
+    pivot_longer(c(BSAF, `Tissue conc. (ng/g wet)`), names_to = 'var', values_to = 'val') %>% 
     mutate(
       species = factor(species, levels = splev), 
       Contaminant = factor(Contaminant, levels = cnlev)

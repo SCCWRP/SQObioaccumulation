@@ -22,7 +22,7 @@ modsedcon_mcs_fun <- function(nsim, sedmeanse, propseaf, SUF, CVBAF, indic_sum){
   
   # bioaccumulation sims
   biosims <- indic_sum %>% 
-    tidyr::gather('contam', 'val', -species) %>% 
+    pivot_longer(-species, names_to = 'contam', values_to = 'val') %>% 
     filter(grepl('\\_calc$', contam)) %>% 
     mutate(
       contam = gsub('\\_calc$', '', contam)
