@@ -17,5 +17,7 @@ bioaccum_batch(biota, contam, constants)
 Run bioaccumulation model function FoodWeb_SQO in batch for all species, contaminants
 }
 \details{
-data used from lazy load include \code{\link{biota_preyprop}}
+Data used from lazy load include \code{\link{biota_preyprop}}. 
+
+The bioaccumulation model core functions are from code written by Michelle Lent in 2010 and edited by Ben Greenfield and Michelle Lent.
 }

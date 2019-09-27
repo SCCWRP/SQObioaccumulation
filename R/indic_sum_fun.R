@@ -31,7 +31,7 @@ indic_sum_fun <- function(cbiota, contamcalc){
     pivot_longer(c(calc, conc), names_to = 'var', values_to = 'val') %>% 
     unite('var', ChemGroup, var) %>% 
     pivot_wider(names_from = var, values_from = val) %>% 
-    mutate_if(is.numeric, round, 3)
+    mutate_if(is.numeric, round, 2)
   
   # prettify
   out <- sumdat %>% 

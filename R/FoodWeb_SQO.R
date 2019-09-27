@@ -46,6 +46,9 @@
 #' @param assimEff_3 required input
 #'
 #' @export
+#' 
+#' @details 
+#' The bioaccumulation model core functions are from code written by Michelle Lent in 2010 and edited by Ben Greenfield and Michelle Lent.
 #'
 FoodWeb_SQO <- function(NumSim, csed, cwater, cpw, log_KowTS, logkow_tempcor, EdA, EdB, xdoc, 
                         ddoc, xpoc, dpoc, alphapoc, alphadoc, ocsed, ds, taxa, A, B, T, lipid, nloc, 
@@ -185,6 +188,7 @@ FoodWeb_SQO <- function(NumSim, csed, cwater, cpw, log_KowTS, logkow_tempcor, Ed
     Output$kd  <- kd;
     
   }
+  
   return(Output)
   
 }

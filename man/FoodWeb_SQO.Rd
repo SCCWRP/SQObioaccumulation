@@ -102,3 +102,6 @@ FoodWeb_SQO(NumSim, csed, cwater, cpw, log_KowTS, logkow_tempcor, EdA, EdB,
 \description{
 Core food web model
 }
+\details{
+The bioaccumulation model core functions are from code written by Michelle Lent in 2010 and edited by Ben Greenfield and Michelle Lent.
+}

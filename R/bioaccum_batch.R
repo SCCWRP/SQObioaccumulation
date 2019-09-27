@@ -6,9 +6,13 @@
 #'
 #' @import tibble
 #' 
-#' @details data used from lazy load include \code{\link{biota_preyprop}}
+#' @details 
+#' Data used from lazy load include \code{\link{biota_preyprop}}. 
+#' 
+#' The bioaccumulation model core functions are from code written by Michelle Lent in 2010 and edited by Ben Greenfield and Michelle Lent.
 #' 
 #' @export
+#' 
 #' 
 #' @importFrom magrittr "%>%"
 bioaccum_batch <- function(biota, contam, constants){
@@ -16,12 +20,12 @@ bioaccum_batch <- function(biota, contam, constants){
   ### HAVE HARD-CODED THE PARAMETER NAMES
   theParamNames <- c("k1","k2", "GR", "Gv", "Gd", "Gf", "vlg", "vcg", "vng", "vwg", "kgb", 
                      "ke", "kd", "Ew", "Ed", "phi", "cpw", "assimEff_1", "assimEff_2", "assimEff_3");
-  
+
   nspecies = nrow(biota_preyprop); 
   nprey = ncol(biota_preyprop);
   ncontam = length(contam$Chem); 
   nparams = length(theParamNames);
-  
+
   #dietary composition (lipid, organic carbon, organic matter, water)
   biota_vld  = as.matrix(biota_preyprop) %*% biota$lipid;
   biota_vcd  = as.matrix(biota_preyprop) %*% biota$nloc;
@@ -142,7 +146,7 @@ bioaccum_batch <- function(biota, contam, constants){
       Results <- FoodWeb_SQO(NumSim=1, csed, cwater, cpw, log_KowTS, logkow_tempcor, EdA, EdB, xdoc, ddoc, xpoc, dpoc, alphapoc, 
                              alphadoc, ocsed, ds, taxa, A, B, T, lipid, nloc, nlom, wc, beta, betap, mo, mp, phi, kM, Wb, Cox, 
                              vss, scav, preyprop, cbiota, vld, vcd, vnd, vwd, GR, assimEff_1, assimEff_2, assimEff_3) 
-      
+
       #extract the biota and prey contaminant information
       CBIOTA[ispecies,icontam] <- Results$cbiota;
       CPREY[ispecies,icontam] <- Results$cprey;
@@ -152,7 +156,6 @@ bioaccum_batch <- function(biota, contam, constants){
       };  
     } #end of loop over species
   } #end of loop over contaminants
-  
   
   ### CALCULATE BSAF (simple measure of biota versus sediment contamination) ###
   for (i in 1:nspecies) {
