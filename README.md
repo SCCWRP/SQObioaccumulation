@@ -138,3 +138,7 @@ sqo_sum_fun(wgtavg, mcsres, constants)
     ## # ... with 5 more variables: `Site linkage 25%` <dbl>, `Site linkage
     ## #   50%` <dbl>, `Site linkage 75%` <dbl>, `Site linkage category` <chr>,
     ## #   `Site assessment category` <chr>
+
+### Metadata
+Resources: <a href="https://ftp.sccwrp.org/pub/download/DOCUMENTS/TechnicalReports/1000_SQOHumanHealthFramework.pdf">report</a><br>
+Contact: <a href="https://www.sccwrp.org/about/staff/ashley-parks/?pdf=4384">Ashley Parks</a>, <a href="stevenbay78@gmail.com">Steve Bay</a><br>
