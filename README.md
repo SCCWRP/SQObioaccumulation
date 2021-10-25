@@ -141,4 +141,4 @@ sqo_sum_fun(wgtavg, mcsres, constants)
 
 ### Metadata
 Resources: <a href="https://ftp.sccwrp.org/pub/download/DOCUMENTS/TechnicalReports/1000_SQOHumanHealthFramework.pdf">report</a><br>
-Contact: <a href="https://www.sccwrp.org/about/staff/ashley-parks/?pdf=4384">Ashley Parks</a>, <a href="stevenbay78@gmail.com">Steve Bay</a><br>
+Contact: <a href="mailto:ashleyp@sccwrp.org">Ashley Parks</a>, <a href="mailto:steveb@sccwrp.org">Steve Bay</a><br>
