@@ -69,7 +69,8 @@ cntcalc <- function(contam, constants){
       log_KowTS = log10(10 ^ logkow_tempcor* (10 ^ (0.0018 * LeBas_Molar_Volume * (0.5 * Sal / 35)))),
       phi = 1 / (1 + (xpoc * dpoc * alphapoc * 10 ^ log_KowTS) + (xdoc * ddoc * alphadoc * 10 ^ log_KowTS)),
       calc_cd_pg.l = ifelse(!is.na(cs_ng.g), 1e6 * (cs_ng.g / (ocsed * (0.35 * 10 ^ log_KowTS)) / 8), 0),
-      free_cd_ng.ml = ifelse(is.na(cd_ng.g), calc_cd_pg.l, ifelse(cd_ng.g <= calc_cd_pg.l, cd_ng.g, calc_cd_pg.l)) / 1e6,
+      #free_cd_ng.ml = ifelse(is.na(cd_ng.g), calc_cd_pg.l, ifelse(cd_ng.g <= calc_cd_pg.l, cd_ng.g, calc_cd_pg.l)) / 1e6,
+      free_cd_ng.ml = ifelse(is.na(cd_ng.g), calc_cd_pg.l, cd_ng.g) / 1e6,
       calc_cp_ng.ml = ifelse(cp_ng.g > 0 & !is.na(cp_ng.g), cp_ng.g / 1e6, ((cs_ng.g / ocsed) / (0.35 * 10 ^ log_KowTS))), 
       log_koc = log10(0.35 * 10 ^ log_KowTS)
     )
